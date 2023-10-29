@@ -1,10 +1,43 @@
-<section class="flex">
+<section class="flex flex-col">
   <%= form_with url: root_path, method: :get, id: "forecast-form", class: "flex w-full" do |f| %>
     <div data-controller="autocomplete" class="grow" data-autocomplete-url-value="<%= search_locations_path %>" role="combobox">
-      <%= f.text_field :location_name, class: "w-full rounded-md border-amber-400", placeholder: "Search Address", data: { autocomplete_target: "input" } %>
-      <%= f.hidden_field :coordinates, data: { autocomplete_target: "hidden" } %>
+      <%= f.text_field :location_name, value: params[:location_name], class: "w-full rounded-md border-amber-400", placeholder: "Search Address", data: { autocomplete_target: "input" } %>
+      <%= f.hidden_field :coordinates, value: params[:coordinates], data: { autocomplete_target: "hidden" } %>
       <ul class="list-group max-h-50 overflow-y-scroll border-amber-400" data-autocomplete-target="results"></ul>
     </div>
     <%= f.submit "Search", class: "bg-amber-600 text-stone-50 p-2 ml-2 rounded-md self-start" %>
+  <% end %>
+
+  <% if @forecast_data.present? %>
+    <div class="mt-10 w-full p-8 bg-amber-300 rounded-xl shadow-lg text-stone-800 relative">
+      <div class="text-xs absolute -bottom-5 right-2 px-2 py-1 mt-5 -z-10 bg-amber-500 rounded">
+        <% if @cached %>
+          <span class="text-green-500">&bull;</span> <span>CACHED</span>
+        <% else %>
+          <span class="text-red-500">&bull;</span> <span>NOT CACHED</span>
+        <% end %>
+      </div>
+      <div class="flex justify-between">
+        <div class="flex flex-col">
+          <h2 class="text-xl"><%= @forecast_data[:location_name] %></h2>
+          <p class="text-xs">as of <%= @forecast_data[:time_utc] %> UTC</p>
+          <p class="text-4xl py-2"><%= display_degrees(@forecast_data[:temp]) %></p>
+          <p><%= @forecast_data[:weather] %></p>
+        </div>
+        <div class="flex flex-col">
+          <%= image_tag "http://openweathermap.org/img/wn/#{@forecast_data[:icon]}@2x.png" %>
+          <table class="text-right text-sm">
+            <tr>
+              <td>min</td>
+              <td>max</td>
+            </tr>
+            <tr>
+              <td><%= display_degrees(@forecast_data[:min]) %></td>
+              <td><%= display_degrees(@forecast_data[:max]) %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   <% end %>
 </section>

@@ -7,6 +7,5 @@ Rails.application.routes.draw do
 
   get "forecaster/search_locations", to: "forecaster#search_locations", as: "search_locations"
 
-  # Defines the root path route ("/")
   root "forecaster#index"
 end
