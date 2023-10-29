@@ -44,6 +44,7 @@ group :development, :test do
 
   gem "rspec-rails"
   gem "rails-controller-testing"
+  gem "hotwire-livereload"
 end
 
 group :development do
