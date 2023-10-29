@@ -4,12 +4,13 @@
 - **Rails Version**: 7.1.1
 - **Dependencies**: Tailwind, Geocoder, RestClient
 
-TODO: link here when it is ready
+https://github.com/shukerov/forecaster2.0/assets/15061336/8841b8d1-24d0-40b8-aeda-33683696dde8
 
 ## Development
 
 - `bin/dev` - stands up the application for development
 - `bin/rspec` - runs specs
+- make sure you add `master.key` to the config directory before standing up the application
 
 ### Other Notes
 
