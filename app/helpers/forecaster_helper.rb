@@ -1,0 +1,2 @@
+module ForecasterHelper
+end
