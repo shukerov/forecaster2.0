@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Forecaster20</title>
+    <title>Forecaster</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,8 +12,9 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-sky-100">
+    <main class="container mx-auto mt-14 px-5">
+      <h1 class="text-center text-4xl mb-10 font-sans text-amber-600 font-bold">FORECASTER</h1>
       <%= yield %>
     </main>
   </body>

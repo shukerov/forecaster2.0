@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "forecaster/search_locations", to: "forecaster#search_locations", as: "search_locations"
+
   # Defines the root path route ("/")
   root "forecaster#index"
 end
