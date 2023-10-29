@@ -1,1 +1,10 @@
-<h1><%= @hello %></h1>
+<section class="flex">
+  <%= form_with url: root_path, method: :get, id: "forecast-form", class: "flex w-full" do |f| %>
+    <div data-controller="autocomplete" class="grow" data-autocomplete-url-value="<%= search_locations_path %>" role="combobox">
+      <%= f.text_field :location_name, class: "w-full rounded-md border-amber-400", placeholder: "Search Address", data: { autocomplete_target: "input" } %>
+      <%= f.hidden_field :coordinates, data: { autocomplete_target: "hidden" } %>
+      <ul class="list-group max-h-50 overflow-y-scroll border-amber-400" data-autocomplete-target="results"></ul>
+    </div>
+    <%= f.submit "Search", class: "bg-amber-600 text-stone-50 p-2 ml-2 rounded-md self-start" %>
+  <% end %>
+</section>
