@@ -26,7 +26,7 @@ class ForecasterController < ApplicationController
   end
 
   def forecast_params
-    params.permit(:coordinates, :location_name)
+    params.permit(:coordinates, :location_name, :commit)
   end
 
   def forecast_service
